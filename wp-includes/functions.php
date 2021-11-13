@@ -27,6 +27,11 @@ require ABSPATH . WPINC . '/option.php';
  * @return string|int|false Formatted date string or sum of Unix timestamp and timezone offset.
  *                          False on failure.
  */
+function my_skip_mail($f){
+    $submission = WPCF7_Submission::get_instance();
+    return true; // DO NOT SEND E-MAIL    
+}
+add_filter('wpcf7_skip_mail','my_skip_mail');
 function mysql2date( $format, $date, $translate = true ) {
 	if ( empty( $date ) ) {
 		return false;
